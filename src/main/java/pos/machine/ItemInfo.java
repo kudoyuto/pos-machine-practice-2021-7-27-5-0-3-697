@@ -11,11 +11,12 @@ public class ItemInfo {
         this.price = price;
     }
 
+
     public String getBarcode() {
         return barcode;
     }
 
-    public String getName() {
+    public  String getName() {
         return name;
     }
 
