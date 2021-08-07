@@ -34,8 +34,18 @@ public class PosMachine {
    public List<Item> calculateItemsSubTotal(List<Item> items){
         for(Item item: items) {
             item.setSubTotal(item.getPrice() * item.getQuantity());
-        } 
+        }
         return items;
+   }
+   public Receipt calculateTotal(List<Item> items){
+        int totalPrice = 0;
+
+        for(Item item: items){
+        totalPrice = item.getSubTotal() + totalPrice;
+        }
+        Receipt receipt = new Receipt (items,totalPrice);
+
+        return receipt;
    }
 
 
