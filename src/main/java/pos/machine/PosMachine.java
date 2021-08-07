@@ -13,9 +13,10 @@ public class PosMachine {
         return null;
     }
 
+
     public List<Item> convertToItems(List<String> barcodes ) {
 
-        List <ItemInfo> itemInfo = getInfo();
+        List <ItemInfo> itemInfo = ItemDataLoader.loadAllItemInfos();
         List <Item> items =  new ArrayList<>();
         for(ItemInfo itemsDetail: itemInfo) {
             for(String barcode : barcodes.stream().distinct().collect(Collectors.toList())){
@@ -30,12 +31,15 @@ public class PosMachine {
         }
 
 
+   public List<Item> calculateItemsSubTotal(List<Item> items){
+        for(Item item: items) {
+            item.setSubTotal(item.getPrice() * item.getQuantity());
+        } 
+        return items;
+   }
 
 
-    public List<ItemInfo> getInfo(){
 
-        return ItemDataLoader.loadAllItemInfos();
-    }
 
 
 
